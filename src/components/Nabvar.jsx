@@ -66,7 +66,7 @@ export default function NavBar({ colorMode }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={()=>{router.push(`/u/${user.uid}`)}}>Profile</MenuItem>
+      <MenuItem onClick={()=>{router.push(`/user/${user.uid}`)}}>Profile</MenuItem>
       <MenuItem onClick={
         ()=>{
           logout().then(() => {
