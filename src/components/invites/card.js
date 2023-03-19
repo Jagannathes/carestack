@@ -81,31 +81,19 @@ const Controls = ({
   FrienderData,
   user,
   authToken,
-  id
+  id,
+  invite
 }) => {
   const [isAccepted, setIsAccepted] = useState(false);
   const [declined, setDeclined] = useState(false);
 
   const acceptRequest = async () => {
-    let sender = {
-      name: user.name,
-      uid: user.uid,
-      photo: user.photo,
-      _id: user._id,
-    };
-    let receiver = {
-      name: profileData.name,
-      uid: profileData.uid,
-      photo: profileData.photo,
-      _id: profileData._id,
-    };
+   
     axios
       .put(
         '/api/request/accept',
         {
-          sender,
-          receiver,
-          _id: id,
+          ...invite,
           status: 'accepted',
         },
         {
@@ -121,27 +109,15 @@ const Controls = ({
   };
 
   const declineRequest = () => {
-    let sender = {
-      name: user.name,
-      uid: user.uid,
-      photo: user.photo,
-      _id: user._id,
-    };
-    let receiver = {
-      name: profileData.name,
-      uid: profileData.uid,
-      photo: profileData.photo,
-      _id: profileData._id,
-    };
-    
+   
+
     axios
       .put(
         `/api/request/accept`,
         {
-          sender,
-          receiver,
-          id: id,
-          status: 'declined',
+          
+          ...invite,
+          status: 'declined'
         },
         {
           headers: {
@@ -232,7 +208,7 @@ const FlexBox = (props) => {
   );
 };
 
-function ProfileCard({ profile, userId, status ,id}) {
+function ProfileCard({ profile, userId, status ,id, invite}) {
   const router = useRouter();
   const { user, authToken } = useContext(AuthContext);
   var randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -278,6 +254,7 @@ function ProfileCard({ profile, userId, status ,id}) {
               FrienderData={null}
               authToken={authToken}
               id={id}
+              invite={invite}
             />
           )}
         </Card>

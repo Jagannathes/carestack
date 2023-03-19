@@ -5,6 +5,7 @@ import { withAuth } from '@/utils/auth';
 async function handler(req, res) {
   if(req.method !== 'PUT') return res.status(400).json({ message: 'method not allowed' })
   try {
+    console.log(req.body)
     const request = await requestSchema.findOneAndUpdate(
         { _id: req.body._id },
       { $set: { status: req.body.status } },
@@ -15,11 +16,12 @@ async function handler(req, res) {
       { $push: { friends: req.body.sender._id } ,
        $pull: { 'invites':  req.body._id  } }
   );
-    userModel.updateOne(
+    const ress= await userModel.updateOne(
       { _id: req.body.sender._id }, 
       { $push: { friends: req.body.receiver._id } ,
        $pull: { 'invites':  req.body._id  } }
   );
+  console.log(ress)
     }
     else{
       userModel.updateOne(

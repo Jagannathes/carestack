@@ -175,7 +175,7 @@ export default function Banner({profile, profileId}) {
     <Box sx = {{flexGrow:1}}>
    
       <Card elevation={5}>
-        <Paper >
+        
       <Box
         className = "profile-banner"
         sx={{
@@ -199,7 +199,7 @@ export default function Banner({profile, profileId}) {
             {profile?.name}
               </Typography>
       </FlexBox>
-      </Paper>
+     
        <FlexBox m = {1}>      
             <Typography variant='body2' >
               <em>  {profile?.bio} </em> 

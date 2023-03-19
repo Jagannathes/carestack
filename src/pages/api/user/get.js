@@ -18,7 +18,9 @@ async function handler(req, res) {
                 _id: { $ne: friendId, $in: _user.friends },
                 friends: { $elemMatch: { $eq: friendId } },
               });
+              console.log(mutualFriends)
               _user.friends = mutualFriends;
+
               return res.status(200).json({ message: 'user found', user: _user });
         }
     }

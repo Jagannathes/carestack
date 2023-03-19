@@ -82,7 +82,8 @@ const Controls = ({
   user,
   authToken
 }) => {
-  const [isFriend, setIsFriend] = useState(profileData.invited?"pending":false);
+  console.log(profileData)
+  const [isFriend, setIsFriend] = useState(profileData.isfriend?true:(profileData.invited?"pending":false));
 
   useEffect(() => {
     if (FrienderId) {

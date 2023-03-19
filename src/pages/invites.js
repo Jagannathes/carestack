@@ -73,7 +73,7 @@ function users() {
               (invite) =>
                 invite.sender.uid !== user.uid && (
                   <Grid item xs={12} sm={6} md={4} lg={4} key={user._id}>
-                    <InviteCard profile={invite.sender} id={invite._id} user={user} status="receive" />
+                    <InviteCard profile={invite.sender} id={invite._id} user={user} status="receive"  invite={invite}/>
                   </Grid>
                 ),
             )}
@@ -81,7 +81,7 @@ function users() {
               (invite) =>
                 invite.receiver.uid !== user.uid && (
                   <Grid item xs={12} sm={6} md={4} lg={4} key={user._id}>
-                    <InviteCard profile={invite.receiver} id={invite._id}status="send" />
+                    <InviteCard profile={invite.receiver} id={invite._id}status="send"  invite={invite}/>
                   </Grid>
                 ),
             )}

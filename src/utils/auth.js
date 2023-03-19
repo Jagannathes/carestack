@@ -35,7 +35,7 @@ export function withUser(handler) {
       if (!token) {
         return handler(req, res);
       }
-
+        console.log('hmm')
        const user = await admin.auth().verifyIdToken(token);
       
       if (!user) {

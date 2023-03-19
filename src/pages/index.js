@@ -39,7 +39,7 @@ function users() {
         if(!loading){
         getUsers()
         }
-    },[loading])
+    },[loading, user])
     
 
   return (

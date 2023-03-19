@@ -7,6 +7,7 @@ async function handler(req, res) {
     return res.status(400).json({ message: 'method not allowed' });
   try {
     await connectDB();
+    console.log(req.user)
     const searchString = req.query.search;
     const query = searchString
       ? { name: { $regex: searchString, $options: 'i' } }
@@ -15,7 +16,8 @@ async function handler(req, res) {
     let users = await UserSchema.find(query);
     
     if(req.user){
-    const userId = (await UserSchema.find({ uid: req.user.uid }))._id;
+    const userId = (await UserSchema.findOne({ uid: req.user.uid }))._id;
+    console.log(userId)
     users = users.map(user => {
         const isFriend = user?.friends?.includes(userId);
         return { ...user.toObject(), isfriend: isFriend };
