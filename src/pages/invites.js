@@ -9,7 +9,7 @@ import FullPageLoader from '@/components/Loader/fullLoader';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-function users() {
+function Users() {
   const [users, setUsers] = useState([]);
   const { user, loading, authToken } = useContext(AuthContext);
   const router = useRouter();
@@ -92,4 +92,4 @@ function users() {
   );
 }
 
-export default users;
+export default Users;

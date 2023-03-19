@@ -6,7 +6,7 @@ import{Box, Grid, Typography, Container} from '@mui/material';
 import UserCard from '@/components/users/cards';
 import { display } from '@mui/system';
 
-function users() {
+function Users() {
     const [users, setUsers] = useState([])
     const {user, loading, authToken} = useContext(AuthContext);
     const getUsers = async () => {
@@ -66,4 +66,4 @@ function users() {
   )
 }
 
-export default users
+export default Users
